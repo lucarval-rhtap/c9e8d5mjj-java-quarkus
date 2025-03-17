@@ -24,9 +24,9 @@ env:
   # Set this password for your specific registry
   IMAGE_REGISTRY_PASSWORD: ${{ secrets.IMAGE_REGISTRY_PASSWORD }}
   # Set this only when using an external Rekor instance
-  # REKOR_HOST: ${{ secrets.REKOR_HOST }}
+  REKOR_HOST: ${{ vars.REKOR_HOST }}
   # Set this only when using an external TUF instance
-  # TUF_MIRROR: ${{ secrets.TUF_MIRROR }}
+  TUF_MIRROR: ${{ vars.TUF_MIRROR }}
   # QUAY_IO_CREDS_USR: ${{ secrets.QUAY_IO_CREDS_USR }}
   # QUAY_IO_CREDS_PSW: ${{ secrets.QUAY_IO_CREDS_PSW }}
   # ARTIFACTORY_IO_CREDS_USR: ${{ secrets.ARTIFACTORY_IO_CREDS_USR }}
@@ -56,7 +56,7 @@ jobs:
     name: Build and send Image Update PR
     runs-on: ubuntu-24.04
     container:
-      image: quay.io/redhat-appstudio/rhtap-task-runner@sha256:c1dca7e6322fb198371a352aefa1f54ff9c556a1fbdb8314c022247aca00b90d
+      image: quay.io/redhat-appstudio/rhtap-task-runner:latest
       options: --privileged
     environment: production
 
@@ -78,9 +78,9 @@ jobs:
             /* Set this password for your specific registry */
             IMAGE_REGISTRY_PASSWORD: `${{ secrets.IMAGE_REGISTRY_PASSWORD }}`, 
             /* Set this only when using an external Rekor instance */
-            /* REKOR_HOST: `${{ secrets.REKOR_HOST }}`, */
+            REKOR_HOST: `${{ vars.REKOR_HOST }}`,
             /* Set this only when using an external TUF instance */
-            /* TUF_MIRROR: `${{ secrets.TUF_MIRROR }}`, */
+            TUF_MIRROR: `${{ vars.TUF_MIRROR }}`,
             /*QUAY_IO_CREDS_USR: `${{ secrets.QUAY_IO_CREDS_USR }}`, */
             /*QUAY_IO_CREDS_PSW: `${{ secrets.QUAY_IO_CREDS_PSW }}`, */
             /*ARTIFACTORY_IO_CREDS_USR: `${{ secrets.ARTIFACTORY_IO_CREDS_USR }}`, */
