@@ -6,7 +6,7 @@ CI_TYPE=${CI_TYPE:-jenkins}
 
 # from buildah-rhtap
 TAG=$(git rev-parse HEAD)
-export IMAGE_URL=${IMAGE_URL-quay.io/chetna14manku_org/rhtap-qe-java-quarkus:$CI_TYPE-$TAG}
+export IMAGE_URL=${IMAGE_URL-quay.io/lucarval-rhtap/rhtap-qe-java-quarkus:$CI_TYPE-$TAG}
 export IMAGE=${IMAGE-$IMAGE_URL}
 
 export DOCKERFILE=${DOCKERFILE-src/main/docker/Dockerfile.jvm.staged}
